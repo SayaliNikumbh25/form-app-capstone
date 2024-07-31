@@ -10,7 +10,7 @@ const verifyToken = (req,res,next) =>{
         const token = req.header('Authorization').split(' ')[1];
         console.log("token",token)
         if(!token) return res.status(401).json({Message: 'Token not found or invalid'});
-        const decoded = jwt.verify(token,process.env.SECRET);
+        const decoded = jwt.verify("secret");
         console.log(decoded)
         req.refUserId = decoded.UserId; 
         

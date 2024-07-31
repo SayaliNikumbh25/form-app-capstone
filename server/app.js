@@ -1,5 +1,5 @@
 import express from 'express';
-import env from 'dotenv';
+
 import mongoose from 'mongoose';
 import authRoutes from './routes/auth.js'
 import formRoutes from './routes/forms.js'
@@ -7,7 +7,7 @@ import folderRoutes from './routes/folder.js'
 import cors from 'cors'
 import verifyToken from './middlewares/verifyToken.js';
 
-env.config();
+
 const app = express();
 
 app.use(cors());
@@ -31,10 +31,10 @@ app.use("*", (req, res) => {
 });
 
 
-app.listen(process.env.PORT, ()=>{
-    mongoose.connect(process.env.MONGODB_URL)
+app.listen(5000, ()=>{
+    mongoose.connect("mongodb+srv://sayalinikumbh:sayali2598@cluster1.06ujhga.mongodb.net/form-builder?retryWrites=true&w=majority&appName=Cluster1")
     .then(()=>{console.log('Connected to database Successfuly')})
-    .then(()=> console.log(`Server is running at port ${process.env.PORT} `))
+    .then(()=> console.log(`Server is running at port 5000 `))
    
 })
 

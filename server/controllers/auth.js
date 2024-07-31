@@ -1,9 +1,7 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js'
-import env from 'dotenv';
 
-env.config();
 
 const createUser = async (req, res) => {
     const { username, email, password } = req.body;
@@ -18,7 +16,7 @@ const createUser = async (req, res) => {
       const newUser = new User({ username, email, password: hashedPassword });
       const resp= await newUser.save();
       console.log("resp",resp)
-      const token = jwt.sign({ id: newUser._id }, process.env.SECRET);
+      const token = jwt.sign({ id: newUser._id }, "secret");
       res.status(201).json({ token, user: { id: newUser._id, username, email  } });
     } catch (error) {
       res.status(500).json({ message: 'Server error' });
@@ -39,7 +37,7 @@ const createUser = async (req, res) => {
       if (!isMatch) {
         return res.status(400).json({ message: 'Invalid credentials' });
       }
-      const token = jwt.sign({ UserId: user._id, username:user.username },process.env.SECRET);
+      const token = jwt.sign({ UserId: user._id, username:user.username },"secret");
       res.status(200).json({ token, user: { id: user._id, username: user.username, email: user.lowerEmail } });
     } catch (error) {
       res.status(500).json({ message: 'Server error' });
