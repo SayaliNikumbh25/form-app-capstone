@@ -11,6 +11,7 @@ const WorkSpaceNavbar = ({fields,title, setTitle, saveForm , setShowFlow, setSho
 
   const handleSaveForm = async() => {
     const res = await saveForm();
+    console.log(`/form/${id}`)
     navigate(`/form/${id}`)
     console.log(res)
 
