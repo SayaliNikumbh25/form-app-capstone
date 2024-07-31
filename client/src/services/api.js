@@ -67,6 +67,7 @@ export const deleteForm = async(formId, token)=>{
 }
 
 export const getPublicForm = async (formId) => {
+  console.log("formId", formId)
   return await axios.get(`/forms/public/${formId}`);
 };
 
