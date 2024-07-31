@@ -5,18 +5,18 @@ import forms from '../controllers/forms.js';
 const router = express.Router();
 
 
-router.get('/',verifyToken,forms.getForms)
+router.get('/',forms.getForms)
 
-router.delete('/delete/:formId',verifyToken, forms.deleteForm);
+router.delete('/delete/:formId', forms.deleteForm);
 
-router.post('/create',verifyToken, forms.createForm);
+router.post('/create',forms.createForm);
 
-router.put('/update/:formId',verifyToken, forms.updateForm);
+router.put('/update/:formId',forms.updateForm);
 
 router.get('/public/:id', forms.getOneForm);
 
 router.post('/submit/:id', forms.submitForm);
 
-router.get('/submissions/:id',verifyToken, forms.getSubmittedForm);
+router.get('/submissions/:id',forms.getSubmittedForm);
 
 export default router

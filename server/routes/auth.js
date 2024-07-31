@@ -8,6 +8,6 @@ router.post('/register', auth.createUser);
 
 router.post('/login', auth.login);
 
-router.patch('/:id',verifyToken, auth.updateUser);
+router.patch('/:id', auth.updateUser);
 
 export default router
